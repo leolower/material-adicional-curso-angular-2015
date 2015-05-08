@@ -1,0 +1,67 @@
+table{
+    width: 100%;
+    border: 1px solid #CCC;
+    text-align: center;
+}
+thead, tfoot{
+    font-weight: bold;
+    background-color: #EEE;
+}
+td{
+    border-bottom: 1px solid #CCC;
+    height: 60px;
+}
+.admin{
+    color: red;
+}
+.editor{
+    color: yellow;
+}
+.user{
+    color: green;
+}
+.disabled{
+    text-decoration: line-through;
+}
+
+.clear{
+    clear: both;
+}
+
+form{
+    border: 1px solid #CCC;
+    width: 300px;
+    margin: auto;
+}
+
+input.ng-valid{
+    border: 1px solid green;
+}
+input.ng-invalid{
+    color: red;
+}
+
+span.error{
+    display: block;
+    clear: both;
+    color: red;
+}
+
+li{
+    list-style: none;
+    clear: both;
+}
+
+label{
+    display: block;
+    width: 250px;
+}
+
+input{
+    float: right;
+}
+
+input[type=submit]{
+    float: left;
+}
+

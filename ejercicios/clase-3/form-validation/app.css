@@ -1,0 +1,38 @@
+li{
+    list-style: none;
+    padding: 10px;
+}
+
+.error{
+    color: red;
+}
+
+.ng-pristine {
+    color:black;
+}
+.ng-dirty {
+    color:orange;
+}
+.ng-touched {
+    border: 1px solid orange;
+}
+.ng-untouched {
+    border: 1px solid blue;
+}
+.ng-pending {
+    color:#32A999;
+}
+
+
+.ng-valid {
+    color:blue;
+}
+.ng-invalid {
+    color:red;
+}
+label{
+    color: #000;
+    width: 80px;
+    display: block;
+    float: left;
+}

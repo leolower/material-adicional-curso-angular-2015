@@ -21,7 +21,7 @@
 <body ng-app="MyAppApp">
     <div ng-controller="MainCtrl as vm">
 
-        <form action="/sendOtherVar" ng-submit="vm.handleSubmit()">
+        <form ng-submit="vm.handleSubmit()">
             <input type="text" name="username" placeholder="Filter by username" ng-model="vm.otherVar"/>
             <input type="submit" value="Send">
         </form>

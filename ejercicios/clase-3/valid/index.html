@@ -1,0 +1,136 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyApp</title>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <!-- App -->
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<!-- App bootstrap -->
+<body ng-app="MyAppApp">
+    <div ng-controller="MainCtrl as vm">
+        <form ng-submit="formObject.$valid && vm.handleSubmit(vm.newUser)" name="formObject" novalidate >
+            <ul>
+                <li>
+                    <label>
+                        Username
+                        <input type="text" ng-model="vm.newUser.username" required name="username">
+                        <span class="error" ng-if="vm.usernameIsInvalid()">Campo requerido!</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Name
+                        <input type="text" ng-model="vm.newUser.name" required name="name" compare-to="vm.newUser.username">
+                        <span class="error" ng-if="formObject.$submitted && formObject.name.$error.required">Campo requerido!</span>
+                        <span class="error" ng-if="formObject.$submitted && formObject.name.$error.compareTo">No match!</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Balance
+                        <input type="number" ng-model="vm.newUser.balance" required name="balance">
+                        <span class="error" ng-if="formObject.$submitted && formObject.balance.$error.required">Campo requerido!</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        CreatedAt
+                        <input type="date" ng-model="vm.newUser.createdAt" required name="createdAt">
+                        <span class="error" ng-if="formObject.$submitted && formObject.createdAt.$error.required">Campo requerido!</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Role
+                        <input type="text" ng-model="vm.newUser.role" required name="role">
+                        <span class="error" ng-if="formObject.$submitted && formObject.role.$error.required">Campo requerido!</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Disabled
+                        <input type="checkbox" ng-model="vm.newUser.disabled"  name="disabled">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Url
+                        <input type="url" ng-model="vm.newUser.url" required name="url">
+                        <span class="error" ng-if="formObject.$submitted && formObject.url.$error.required">Campo requerido!</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Image
+                        <input type="text" ng-model="vm.newUser.image" required name="image">
+                        <span class="error" ng-if="formObject.$submitted && formObject.image.$error.required">Campo requerido!</span>
+                    </label>
+                </li>
+                <li>
+                    <input type="submit" value="Send">
+                </li>
+            </ul>
+                    <div class="clear"></div>
+
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th ng-click="vm.order='username'">Username</th>
+                    <th ng-click="vm.order='name'">Name</th>
+                    <th ng-click="vm.order='balance'">Balance</th>
+                    <th ng-click="vm.order='role'">Role</th>
+                    <th ng-click="vm.sortBy('createdAt')">CreatedAt</th>
+                    <th ng-click="vm.order='disabled'">Disabled</th>
+                    <th ng-click="vm.order='url'">Url</th>
+                    <th ng-click="vm.order='image'">Image</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in vm.users | orderBy:vm.order | filter: {username: vm.userFilter}" ng-class="{disabled: user.disabled}">
+                    <td>{{user.username | lowercase}}</td>
+                    <td>{{user.name | uppercase}}</td>
+                    <td>{{user.balance | currency}}</td>
+                    <td ng-class="user.role" ng-switch="user.role">
+                        {{user.role}}
+                        <span ng-switch-when="admin">
+                            !!!
+                        </span>
+                        <span ng-switch-when="editor">
+                            !!
+                        </span>
+                        <span ng-switch-when="user">
+                         :(
+                     </span>
+                 </td>
+                 <td>{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                 <td>
+                    {{user.disabled}}
+                </td>
+                <td><a ng-href="{{user.url}}">Link</a></td>
+                <td><img ng-src="{{user.image}}" alt=""></td>
+                <td><a href="" ng-click="vm.edit(user)">Edit</a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9">
+                    {{vm.users.length}} Users
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

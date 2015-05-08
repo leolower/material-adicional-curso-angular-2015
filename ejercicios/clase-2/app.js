@@ -8,7 +8,7 @@ angular.module('MyAppApp', [])
     var vm = this;
 
     vm.users = window.users;
-    vm.userFilter = '0';
+    vm.userFilter = '';
     vm.order = 'username';
     vm.sortBy = function(txt) {
         vm.order = txt;
