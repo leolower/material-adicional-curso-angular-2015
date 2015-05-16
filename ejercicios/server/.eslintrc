@@ -1,0 +1,26 @@
+plugins:
+  - angular
+
+globals:
+    require: true
+    window: true
+    angular: true
+    jQuery: true
+    $: true
+    console: true
+    appConfig: true
+    localStorage: true
+    document: true
+    assert: true
+
+rules:
+    quotes:
+      - 0
+      - "single"
+    no-use-before-define: false
+    no-console: false
+    camelcase: false
+    global-strict: false
+    angular/ng_window_service: false
+    angular/ng_document_service: false
+    angular/ng_timeout_service: false

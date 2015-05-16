@@ -14,16 +14,17 @@ angular.module('MyAppApp', [])
 
     vm.constant = BASE_URL;
     vm.users = UserService.getAll();
+    vm.createNewUser = false;
 
     vm.newUser = {
-        username: 'newUser',
-        name: 'newUser newUser',
-        balance: 123123,
-        role: 'admin',
-        createdAt: new Date('2015-04-06 12:05:00'),
-        disabled: true,
-        url: 'http://github.com/username0',
-        image: 'https://placekitten.com/g/50/50'
+        username: null,
+        name: null,
+        balance: null,
+        role: null,
+        createdAt: null,
+        disabled: null,
+        url: null,
+        image: null
     };
     vm.userFilter = '';
     vm.order = 'username';
@@ -39,10 +40,18 @@ angular.module('MyAppApp', [])
         $rootScope.$broadcast('othercontroller.eventName', newUser);
 
         vm.newUser = {};
+        vm.createNewUser = false;
     };
 
     vm.edit = function(user) {
         vm.newUser = user;
+    };
+
+    vm.create = function() {
+        vm.createNewUser = true;
+    };
+    vm.cancelCreate = function() {
+        vm.createNewUser = false;
     };
 
 })
@@ -50,29 +59,30 @@ angular.module('MyAppApp', [])
 .factory('UserService', UserService)
 
 .constant('BASE_URL', {
-    server: 'http://localhost:8080/api'
+    server: 'http://192.168.12.21:3000/api'
 })
 
-.directive('compareTo', compareTo);
+// .directive('compareTo', compareTo)
+;
 
-function compareTo() {
-    return {
-        require: 'ngModel',
-        scope: {
-            otherModelValue: '=compareTo'
-        },
-        link: function(scope, element, attributes, ngModel) {
+// function compareTo() {
+//     return {
+//         require: 'ngModel',
+//         scope: {
+//             otherModelValue: '=compareTo'
+//         },
+//         link: function(scope, element, attributes, ngModel) {
 
-            ngModel.$validators.compareTo = function(modelValue) {
-                return modelValue === scope.otherModelValue;
-            };
+//             ngModel.$validators.compareTo = function(modelValue) {
+//                 return modelValue === scope.otherModelValue;
+//             };
 
-            scope.$watch('otherModelValue', function() {
-                ngModel.$validate();
-            });
-        }
-    };
-}
+//             scope.$watch('otherModelValue', function() {
+//                 ngModel.$validate();
+//             });
+//         }
+//     };
+// }
 
 function UserService($rootScope) {
     var users = [{

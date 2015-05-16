@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 
     <script src="app.js"></script>
+    <script src="directives2.js"></script>
 
     <!-- App -->
     <link rel="stylesheet" href="app.css">
@@ -17,6 +18,19 @@
 <!-- App bootstrap -->
 <body ng-app="MyAppApp">
     <div ng-controller="MainCtrl as vm">
+
+        <!-- <div class="my-directive"></div> -->
+
+        <!-- <my-directive></my-directive> -->
+        <!-- <p my-directive atributo="1234"> -->
+            <!-- <p>No directive :(</p> -->
+            <!-- <p> -->
+<!--                 transclude!!
+                {{vm.createNewUser | json}}
+            </p>
+            <ng-transclude></ng-transclude>
+        </p>
+ -->
         <button ng-if="!vm.createNewUser" ng-click="vm.create()">Create New User!</button>
         <form ng-if="vm.createNewUser" ng-submit="formObject.$valid && vm.handleSubmit(vm.newUser)" name="formObject" novalidate >
             <ul>
@@ -100,29 +114,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="user in vm.users | orderBy:vm.order | filter: {username: vm.userFilter}" ng-class="{disabled: user.disabled}">
-                    <td>{{user.username | lowercase}}</td>
-                    <td>{{user.name | uppercase}}</td>
-                    <td>{{user.balance | currency}}</td>
-                    <td ng-class="user.role" ng-switch="user.role">
-                        {{user.role}}
-                        <span ng-switch-when="admin">
-                            !!!
-                        </span>
-                        <span ng-switch-when="editor">
-                            !!
-                        </span>
-                        <span ng-switch-when="user">
-                         :(
-                     </span>
-                 </td>
-                 <td>{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
-                 <td>
-                    {{user.disabled}}
-                </td>
-                <td><a ng-href="{{user.url}}">Link</a></td>
-                <td><img ng-src="{{user.image}}" alt=""></td>
-                <td><a href="" ng-click="vm.edit(user)">Edit</a></td>
+            <tr ng-repeat="user in vm.users | orderBy:vm.order | filter: {username: vm.userFilter}" ng-class="{disabled: user.disabled}" user-tr>
             </tr>
         </tbody>
         <tfoot>
@@ -134,5 +126,8 @@
         </tfoot>
     </table>
 </div>
+
+
+
 </body>
 </html>

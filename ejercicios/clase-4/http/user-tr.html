@@ -1,0 +1,22 @@
+<td>{{user.username | lowercase}}</td>
+<td>{{user.name | uppercase}}</td>
+<td>{{user.balance | currency}}</td>
+<td ng-class="user.role" ng-switch="user.role">
+    {{user.role}}
+    <span ng-switch-when="admin">
+        !!!
+    </span>
+    <span ng-switch-when="editor">
+        !!
+    </span>
+    <span ng-switch-when="user">
+        :(
+    </span>
+</td>
+<td>{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+<td>
+    {{user.disabled}}
+</td>
+<td><a ng-href="{{user.url}}">Link</a></td>
+<td><img ng-src="{{user.image}}" style="max-width: 100px" alt=""></td>
+<td><a href="" ng-click="vm.edit(user)">Edit</a></td>
