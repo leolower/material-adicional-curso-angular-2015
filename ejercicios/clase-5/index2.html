@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>X en Línea</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="app/login/signin.css">
+    <link rel="stylesheet" href="app/game/x-in-line.css">
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+
+    <!-- App scripts -->
+    <script src="app/app.js"></script>
+    <script src="app/login/login.module.js"></script>
+    <script src="app/game/game.module.js"></script>
+</head>
+<body ng-app="XEnLinea" ng-controller="MainController as MainController">
+
+    <div class="container">
+
+        <ui-view></ui-view>
+
+    </div>
+</body>
+</html>

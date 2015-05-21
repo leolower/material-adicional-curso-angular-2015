@@ -1,0 +1,21 @@
+{
+  "name": "clase-5",
+  "version": "0.0.0",
+  "homepage": "https://github.com/leolower/material-adicional-curso-angular-2015",
+  "authors": [
+    "leolower <leolower@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.13.0",
+    "bootstrap": "~3.3.4",
+    "ui-router": "~0.2.14"
+  }
+}

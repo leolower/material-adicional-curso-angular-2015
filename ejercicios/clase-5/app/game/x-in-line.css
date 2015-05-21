@@ -1,0 +1,9 @@
+.x-in-line{
+    margin: auto;
+}
+.x-in-line td{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    text-align: center;
+}

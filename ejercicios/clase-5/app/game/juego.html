@@ -1,0 +1,7 @@
+<table class="x-in-line">
+    <tr ng-repeat="row in GameController.rows" ng-init="trIndex=$index">
+        <td ng-repeat="cell in row.cells" ng-click="GameController.clickOnCell(trIndex,$index)">
+            {{cell.value}}
+        </td>
+    </tr>
+</table>
